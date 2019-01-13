@@ -1,8 +1,12 @@
+<!-- README.md -->
+
 # <p align="center">kernel-modules-hook</p>
 
 Tired of missing modules when updating the kernel?<br/>
 Annoyed by `modprobe: FATAL: Module smth not found in directory /lib/modules/new-kernel`?<br/>
 Losing uptime after reboots due to kernel update?
+
+[View on the AUR](https://aur.archlinux.org/packages/kernel-modules-hook/).
 
 *The solution is here.*
 
@@ -18,15 +22,25 @@ Losing uptime after reboots due to kernel update?
 Do not worry, backups are automatically cleaned.
 
 ## Installation
-[AUR link](https://aur.archlinux.org/packages/kernel-modules-hook/)
+
+#### From the AUR:
 ```bash
-$ ${your_aur_helper} -S kernel-modules-hook
-
-# Or from git:
-
-$ git clone https://github.com/saber-nyan/kernel-modules-hook.git kmh
-$ cd kmh
-$ makepkg -sci
-$ sudo systemctl daemon-reload
-$ sudo systemctl enable linux-modules-cleanup
+"$YOUR_FAVORITE_AUR_HELPER" -S kernel-modules-hook
 ```
+
+#### Or from git:
+
+```bash
+git clone https://github.com/saber-nyan/kernel-modules-hook.git
+cd kernel-modules-hook
+makepkg -sci
+```
+
+### Enable automatic cleanup:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable linux-modules-cleanup.service
+```
+
+<!-- vim: set ts=2 sw=2 et syn=markdown: -->

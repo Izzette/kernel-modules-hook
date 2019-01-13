@@ -1,14 +1,10 @@
 [Trigger]
+Operation = Install
 Operation = Upgrade
-Type = Package
-Target = linux
-Target = linux-hardened
-Target = linux-lts
-Target = linux-zen
-
+Type = File
+Target = usr/lib/modules/*/modules.alias
 
 [Action]
 Description = Save Linux kernel modules
 When = PreTransaction
-Depends = rsync
 Exec = /bin/sh -c 'KVER="${KVER:-$(uname -r)}"; if test -e "/lib/modules/${KVER}"; then rsync -AHXal --delete-after "/lib/modules/${KVER}" /lib/modules/backup/; fi'
